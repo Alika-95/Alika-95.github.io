@@ -1,0 +1,56 @@
+/* ===================
+   PART 1: Header & Navigation
+   =================== */
+
+/* Step 1: Make header a flex container */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #5D4037;
+  padding: 16px 24px;
+}
+
+/* Step 2: Style the logo */
+.logo {
+  font-family: Georgia, serif;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #FFFAF0;
+}
+
+/* Step 3: Make nav list horizontal */
+nav ul {
+  display: flex;
+  gap: 24px;
+  list-style: none;
+}
+
+/* Step 4: Style nav links */
+nav a {
+  color: #FFFAF0;
+  text-decoration: none;
+  padding: 8px 12px;
+}
+
+nav a:hover {
+  color: #8D6E63;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+/* ===================
+   PART 2: Hero Section
+   =================== */
+
+/* Step 1: Center hero content */
+.hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
+  background-color: #FFF3E0;
+  padding: 40px 20px;
+  text-align: center;
+}
