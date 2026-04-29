@@ -142,7 +142,7 @@ nav a:hover {
 /* Cards: single column on mobile */
 .card-container {
   display: flex;
-  flex-direction: column;           /* Use "column" to stack cards vertically */
+  flex-direction: row;           /* Use "column" to stack cards vertically */
   gap: 20px;
 }
 
