@@ -1,13 +1,42 @@
 /* ===============================
+   ROOT / DESIGN SYSTEM
+================================= */
+
+:root {
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+
+  --primary: #005f73;
+  --secondary: #0a9396;
+  --background: #f4f8fb;
+  --text: #222;
+}
+
+/* ===============================
    GLOBAL STYLES
 ================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
 
 body {
   margin: 0;
   font-family: Arial, sans-serif;
   line-height: 1.6;
-  background-color: #f4f8fb;
-  color: #222;
+
+  background-color: var(--background);
+  color: var(--text);
+
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 /* ===============================
@@ -15,15 +44,16 @@ body {
 ================================= */
 
 header {
-  background-color: #005f73;
+  background-color: var(--primary);
   color: white;
-  padding: 1.5rem 1rem;
+
+  padding: var(--space-lg);
   text-align: center;
 }
 
 header h1 {
   margin: 0;
-  font-size: 2.2rem;
+  font-size: 2rem;
 }
 
 /* ===============================
@@ -33,30 +63,31 @@ header h1 {
 nav ul {
   list-style: none;
   padding: 0;
-  margin-top: 1rem;
+  margin: var(--space-md) 0 0;
 
   display: flex;
-  justify-content: center;
-  gap: 1rem;
-
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: var(--space-sm);
+  align-items: center;
 }
 
 nav a {
   color: white;
   text-decoration: none;
-  padding: 0.5rem 0.75rem;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
-}
 
-/* Hover Effect */
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+
+  min-height: 44px;
+  display: inline-block;
+
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
 
 nav a:hover {
-  background-color: #0a9396;
+  background-color: var(--secondary);
+  transform: translateY(-2px);
 }
-
-/* Keyboard Accessibility */
 
 nav a:focus {
   outline: 3px solid #ffdd57;
@@ -64,36 +95,45 @@ nav a:focus {
 }
 
 /* ===============================
-   MAIN CONTENT
+   MAIN LAYOUT
 ================================= */
 
 main {
-  max-width: 1100px;
+  flex: 1;
+  max-width: 1200px;
   margin: auto;
-  padding: 2rem 1rem;
+  padding: var(--space-lg);
 }
 
 /* ===============================
-   SECTIONS
+   SECTIONS (GLOBAL CARDS)
 ================================= */
 
 section {
   background-color: white;
-  padding: 2rem;
-  margin-bottom: 2rem;
 
-  border-radius: 10px;
+  padding: var(--space-lg);
+  margin-bottom: var(--space-lg);
 
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+section:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
 }
 
 section h2 {
-  color: #005f73;
+  color: var(--primary);
   margin-top: 0;
 }
 
 /* ===============================
-   HERO SECTION
+   HERO
 ================================= */
 
 .hero {
@@ -101,37 +141,48 @@ section h2 {
   background-color: #e0fbfc;
 }
 
-/* ===============================
-   ACTIVITIES
-================================= */
+.hero-image {
+  width: 100%;
+  max-width: 800px;
+  height: auto;
 
-.activities article {
-  margin-bottom: 1.5rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid #ccc;
-}
+  margin: var(--space-md) auto;
+  display: block;
 
-.activities article:last-child {
-  border-bottom: none;
+  border-radius: 12px;
 }
 
 /* ===============================
-   LISTS
+   CARD LAYOUT
 ================================= */
 
-ul {
-  padding-left: 1.5rem;
+.card-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
 }
 
-/* ===============================
-   FOOTER
-================================= */
+.card {
+  background-color: #f8fbfd;
 
-footer {
-  background-color: #005f73;
-  color: white;
-  text-align: center;
-  padding: 1rem;
+  padding: var(--space-lg);
+
+  border-radius: 12px;
+  border: 1px solid #d6e4ea;
+
+  flex: 1;
+
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.card h3 {
+  margin-top: 0;
+  color: var(--secondary);
 }
 
 /* ===============================
@@ -139,47 +190,128 @@ footer {
 ================================= */
 
 img {
-  display: block;
   width: 100%;
-  max-width: 750px;   
+  max-width: 100%;
   height: auto;
-  margin: 1.5rem auto;
+
+  display: block;
 
   border-radius: 12px;
 
-  
+  margin: var(--space-md) auto;
+
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
 }
 
-img:hover {
-  transform: scale(1.02);
-  transition: transform 0.3s ease;
+/* ===============================
+   FORMS
+================================= */
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
 }
 
-@media (max-width: 768px) {
-  img {
-    max-width: 100%;  
-    border-radius: 10px;
+fieldset {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: var(--space-lg);
+}
+
+label {
+  font-weight: bold;
+  margin-top: var(--space-sm);
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 0.75rem;
+
+  border: 1px solid #ccc;
+  border-radius: 6px;
+
+  font-size: 1rem;
+}
+
+button {
+  padding: var(--space-md) var(--space-lg);
+
+  border: none;
+  border-radius: 8px;
+
+  background-color: var(--primary);
+  color: white;
+
+  font-size: 1rem;
+
+  cursor: pointer;
+
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background-color: var(--secondary);
+  transform: scale(1.03);
+}
+
+/* ===============================
+   FOOTER
+================================= */
+
+footer {
+  background-color: var(--primary);
+  color: white;
+
+  text-align: center;
+
+  padding: var(--space-lg);
+}
+
+footer a {
+  color: #ffdd57;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* ===============================
+   TABLET (768px+)
+================================= */
+
+@media (min-width: 768px) {
+
+  nav ul {
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .card-container {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .card {
+    flex: 1 1 45%;
   }
 }
 
 /* ===============================
-   RESPONSIVE DESIGN
+   DESKTOP (1024px+)
 ================================= */
 
-@media (max-width: 768px) {
+@media (min-width: 1024px) {
 
-  header h1 {
-    font-size: 1.8rem;
+  .card {
+    flex: 1 1 30%;
   }
 
-  nav ul {
-    flex-direction: column;
-    align-items: center;
+  main {
+    padding: var(--space-xl);
   }
-
-  section {
-    padding: 1.5rem;
-  }
-
 }
